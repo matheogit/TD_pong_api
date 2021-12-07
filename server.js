@@ -24,13 +24,13 @@ const clients = {};
 const games = {};
 
 io.on('connection', (socket) => {
-  console.log('client connected');
+  //console.log('client connected');
   //console.log('client // ' + socket.request.connection.remoteAddress + " // " + socket.id);
 
   socket.on('button', function(page){
     io.emit("button", page);
   });
-  socket.on('create', () => {
+	socket.on('create', () => {
 		let newGameId = guid();
 		games[newGameId] = {
 			"gameId": newGameId,
@@ -42,17 +42,24 @@ io.on('connection', (socket) => {
 		let gameId = data.gameId;
 		if ( (! games[gameId]) || games[gameId].clients.length >= 2 ) {
 			return;
-		}/*
-		if ( games[gameId].clients.length == 2 ) {
-			updateGameState();
-		}*/
+		}
+		socket.join(gameId);
 		games[gameId].clients[games[gameId].clients.length] = socket;
-		socket.on('move', (data) => {
-			io.emit('move', data);
-		});
+		let movingBat = "right-bat";
+		if ( socket.id === games[data.gameId].clients[0].id ) {
+			movingBat = "left-bat";
+		}
+		socket.emit('side', movingBat)
+    if(games[gameId].clients.length >= 2){
+      socket.to(data.gameId).emit('full');  
+      socket.emit('full')  
+    }
+	});
+	socket.on('move', (data) => {
+		socket.to(data.gameId).emit('move', {"movingBat": data.movingBat, "position": data.position});
 	});
   socket.on('disconnect', function () {
-    console.log('client disconnected');
+    //console.log('client disconnected');
   });
 });
 
