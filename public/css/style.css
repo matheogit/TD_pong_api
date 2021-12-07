@@ -1,0 +1,60 @@
+html,body,#container {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#container {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: stretch;
+}
+
+#left-side {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+#left-area {
+	left: 10px;
+	height: 100%;
+	width: 10px;
+}
+
+#left-bat {
+	position: relative;
+	height: 10%;
+	width: 10px;
+	top: 0px;
+	left: 0px;
+	background: black;
+}
+
+#middle {
+	height: 100%;
+	width: 5px;
+	background: black;
+}
+
+#right-side {
+	width: 100%;
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+#right-area {
+	height: 100%;
+	width: 10px;
+}
+
+#right-bat {
+	position: relative;
+	height: 10%;
+	width: 10px;
+	top: 0px;
+	right: 0px;
+	background: black;
+}
