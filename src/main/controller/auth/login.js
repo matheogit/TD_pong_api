@@ -1,8 +1,9 @@
 module.exports = {
-    send: function (req, res){
-        let pwd = req.params.pwd //recupération du mot de passe en paramètre
-        let user = req.params.user//recupération dunom d'utilisateur en paramètre
-        let result = {"User": user,"Psw": pwd}
+    send: function (req, res, next){
+        let user = req.body.username //recupération dunom d'utilisateur en paramètre
+        let pwd = req.body.passeword //recupération du mot de passe en paramètre
+        let result = {"User": user,"Pwd": pwd}
+        res.
         res.send(result);
     },
 }
