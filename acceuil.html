@@ -4,8 +4,13 @@
         <title>Acceuil</title>
       </head>
     <body>
-        <button>2v2</button>
-        <button>1v1</button>
-        <button>leaderboard</button>
+        <button name="button" onclick="myFunction('./two.html')">2v2</button>
+        <button name="button" onclick="myFunction('./one.html')">1v1</button>
+        <button name="button" onclick="myFunction('./leaderboard.html')">leaderboard</button>
     </body>
+    <script>  
+        function myFunction(value) {
+            window.location.href = value;
+        }
+    </script>
 </html> 
