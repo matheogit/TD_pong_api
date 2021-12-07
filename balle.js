@@ -8,11 +8,13 @@ class Balle{
         this.posY = posY;
     }
 
-    get getPosX(){
+    getPosX(){
         return this.posX;
     }
 
-    get getPosY(){
+    getPosY(){
         return this.posY;
     }
 }
+
+module.exports = Balle
