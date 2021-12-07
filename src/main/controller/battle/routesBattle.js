@@ -7,7 +7,7 @@ var express = require('express');
 var router = express.Router();
 
 /*********BALLE*********/
-router.route('/balle').get(balle.getRaquettePos);
+router.route('/balle').get(balle.getBallePos);
 
 /*********RAQUETTE*********/
 router.route('/raquette/:idJoueur').get(raquette.getRaquettePos);

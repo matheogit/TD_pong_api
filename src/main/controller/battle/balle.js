@@ -1,7 +1,7 @@
 var partie = require("./partie")
 
 module.exports = {
-  getRaquettePos: function (req, res) {
+  getBallePos: function (req, res) {
     let game = partie.getGame()
     let positionX = game.balle.getPosX()
     let positionY = game.balle.getPosY()
