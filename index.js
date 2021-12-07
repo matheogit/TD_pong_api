@@ -27,19 +27,17 @@ io.on('connection', (socket) => {
 		let gameId = data.gameId;
 		if ( (! games[gameId]) || games[gameId].clients.length >= 2 ) {
 			return;
-		}/*
-		if ( games[gameId].clients.length == 2 ) {
-			updateGameState();
-		}*/
+		}
+		socket.join(gameId);
 		games[gameId].clients[games[gameId].clients.length] = socket;
-		games[gameId].clients.forEach(clientSocket => {
-			clientSocket.emit('test');
-			console.log(clientSocket.id);
-		});
-		console.log(games[gameId].clients.length);
-		socket.on('move', (data) => {
-			io.emit('move', data);
-		});
+		let movingBat = "right-bat";
+		if ( socket.id === games[data.gameId].clients[0].id ) {
+			movingBat = "left-bat";
+		}
+		socket.emit('side', movingBat)
+	});
+	socket.on('move', (data) => {
+		socket.to(data.gameId).emit('move', {"movingBat": data.movingBat, "position": data.position});
 	});
 });
 

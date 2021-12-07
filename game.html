@@ -32,7 +32,9 @@
 	<script>
 		const socket = io();
 
-		const leftBat = document.getElementById('left-bat');
+		//const leftBat = document.getElementById('left-bat');
+		let movingBatId = null;
+		let movingBat = null;
 
 		const createButton = document.getElementById('create-button');
 
@@ -46,35 +48,38 @@
 		createButton.addEventListener('click', (event) => {
 			socket.emit('create', {})
 		})
+		
+		socket.on('side', (givenBat) => {
+			movingBatId = givenBat;
+			movingBat = document.getElementById(movingBatId);
+		});
 
 		document.addEventListener('keydown', (event) => {
 			const pressedKey = event.key;
-			const currentPosition = leftBat.offsetTop;
+			const currentPosition = movingBat.offsetTop;
 			switch (event.key) {
 				case "ArrowDown":
 					var newPos = currentPosition + 5 + "px"
-					leftBat.style.top = newPos;
-					socket.emit('move', newPos)
+					movingBat.style.top = newPos;
+					socket.emit('move', {"gameId":gameId, "position":newPos, "movingBat": movingBatId});
 					break;
 				case "ArrowUp":
 					var newPos = currentPosition - 5 + "px"
-					leftBat.style.top = newPos;
-					socket.emit('move', newPos)
+					movingBat.style.top = newPos;
+					socket.emit('move', {"gameId":gameId, "position":newPos, "movingBat": movingBatId});
 					break;
 			}
 			console.log(pressedKey);
 		});
 
-		socket.on('move', function(pos) {
-			leftBat.style.top = pos;
+		socket.on('move', function(data) {
+			var movedBat = document.getElementById(data.movingBat);
+			movedBat.style.top = data.position;
 		});
 		socket.on('create', function(response) {
 			window.location = window.location.protocol + "//" + window.location.host + window.location.pathname + "?gameId=" + response.gameId;
 		})
 
-		socket.on('test', () => {
-			console.log('test');
-		})
 
 		function findGetParameter(parameterName) {
 			var result = null,
