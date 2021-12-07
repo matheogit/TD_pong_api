@@ -6,9 +6,9 @@ module.exports = {
     let idJoueur = req.params.idJoueur
     let result
     if (idJoueur == 1)
-      result = {"id": id, "score": game.score_p1}
+      result = {"idJoueur": idJoueur, "score": game.score_p1}
     else if (idJoueur == 2)
-      result = {"id": id, "score": game.score_p2}
+      result = {"idJoueur": idJoueur, "score": game.score_p2}
     else
       result = "idJoueur incorrect"
     res.send(result)
