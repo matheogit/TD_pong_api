@@ -18,6 +18,6 @@ router.route('/score/:idJoueur').get(score.getScore);
 
 /*********PARTIE*********/
 router.route('/etat').get(partie.getEtatPartie);
-
+router.route('/newgame').get(partie.createNewGame);
 
 module.exports = router;
