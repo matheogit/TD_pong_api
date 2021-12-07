@@ -1,4 +1,9 @@
 class Player{
+
+    pseudo;
+    state;
+    #id;
+
     constructor(nom, etat, id){
         this.pseudo = nom;
         this.state = etat;

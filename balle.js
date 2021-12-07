@@ -1,4 +1,8 @@
-class balle{
+class Balle{
+
+    posX;
+    posY;
+
     constructor(posX,posY){
         this.posX = posX;
         this.posY = posY;

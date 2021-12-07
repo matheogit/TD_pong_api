@@ -1,4 +1,9 @@
-class raquette{
+class Raquette{
+
+    #id_joueur;
+    pos_X;
+    pos_Y;
+
     constructor(pos_Y, pos_X, id_joueur){
         this.id_joueur = id_joueur;
         this.pos_Y = pos_Y;
