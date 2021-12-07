@@ -5,17 +5,13 @@ module.exports = {
     let game = partie.getGame()
     let idJoueur = req.params.idJoueur
     
-    let raquette = undefined
+    let result
     if (idJoueur == 1) {
-      raquette = game.raquette1
+      positionRaquette = game.raquette1.pos_Y
+      result = {"id": idJoueur, "pos": positionRaquette}
     }
     else if (idJoueur == 2) {
-      raquette = game.raquette2
-    }
-
-    let result
-    if (raquette != undefined) {
-      let positionRaquette = raquette.getPosY()
+      positionRaquette = game.raquette2.pos_Y
       result = {"id": idJoueur, "pos": positionRaquette}
     }
     else {
