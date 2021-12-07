@@ -3,8 +3,7 @@ var Game = require("../../../../Game")
 var game
 module.exports = {
   getEtatPartie: function (req, res) {
-    let partieEnCours = postState()
-    let result = {"partieEnCours": partieEnCours}
+    let result = {"partieTerminee": game.termine}
     res.send(result)
   },
   createNewGame: function (req, res) {
