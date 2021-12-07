@@ -1,8 +1,16 @@
+var partie = require("./partie")
+
 module.exports = {
   getScore: function (req, res) {
+    let game = partie.getGame()
     let idJoueur = req.params.idJoueur
-    let scoreJoueur = updateScore(idJoueur)
-    let result = {"id": id, "score": scoreJoueur}
+    let result
+    if (idJoueur == 1)
+      result = {"id": id, "score": game.score_p1}
+    else if (idJoueur == 2)
+      result = {"id": id, "score": game.score_p2}
+    else
+      result = "idJoueur incorrect"
     res.send(result)
   }
 }
