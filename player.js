@@ -26,3 +26,4 @@ class Player{
         this.state = etat;
     }
 }
+export default Player;

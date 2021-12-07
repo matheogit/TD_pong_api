@@ -26,3 +26,4 @@ class Raquette{
         return this.pos_X;
     }
 }
+export default Raquette;
