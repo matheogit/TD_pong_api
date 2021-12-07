@@ -1,15 +1,49 @@
+var partie = require("./partie")
+
 module.exports = {
   getRaquettePos: function (req, res) {
+    let game = partie.getGame()
     let idJoueur = req.params.idJoueur
-    let positionJoueur = getPosR(idJoueur)
-    let result = {"id": idJoueur, "pos": positionJoueur, "test1": 1}
+    
+    let raquette = undefined
+    if (idJoueur == 1) {
+      raquette = game.raquette1
+    }
+    else if (idJoueur == 2) {
+      raquette = game.raquette2
+    }
+
+    let result
+    if (raquette != undefined) {
+      let positionRaquette = raquette.getPosY()
+      result = {"id": idJoueur, "pos": positionRaquette}
+    }
+    else {
+      result = "idJoueur incorrect"
+    }
+
     res.send(result)
   },
   postRaquettePos: function (req, res) {
+    let game = partie.getGame()
     let idJoueur = req.params.idJoueur
-    let pos = req.params.pos
-    let positionRaquette = setRaquettePos(idJoueur, pos)
-    let result = {"id": idJoueur, "pos": positionRaquette, "test2": 2}
+    let raquette = undefined
+    if (idJoueur == 1) {
+      raquette = game.raquette1
+    }
+    else if (idJoueur == 2) {
+      raquette = game.raquette2
+    }
+
+    let result
+    if (raquette != undefined) {
+      let positionRaquette = raquette.setPosY(req.params.pos)
+      result = {"id": idJoueur, "pos": positionRaquette}
+    }
+    else {
+      result = "idJoueur incorrect"
+    }
+
     res.send(result)
   },
 }
