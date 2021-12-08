@@ -1,10 +1,15 @@
 const express = require('express');
 const app = express();
 const http = require('http');
+const { resolve } = require('path');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server) ;
+var request = require('request')
+
 var routesBattle = require('./Controller/routesBattle')
+
+const games = {};
 
 app.use(express.static(__dirname + "/public"));
 
@@ -20,18 +25,22 @@ app.get('/two.html/:choix', (req, res) => {
   res.sendFile(__dirname + "/" + req.params.choix);
 });
 
-const clients = {};
-const games = {};
-
 io.on('connection', (socket) => {
-  //console.log('client connected');
-  //console.log('client // ' + socket.request.connection.remoteAddress + " // " + socket.id);
+
 
   socket.on('button', function(page){
     io.emit("button", page);
   });
 	socket.on('create', () => {
 		let newGameId = guid();
+		request("http://localhost:8090/battle/newgame" + newGameId, (error, response, body)=> {
+			if (!error && response.statusCode === 200) {
+			  const game_json = JSON.parse(body)
+			  console.log("Got a response: ", game_json)
+			} else {
+			  console.log("Got an error: ", error, ", status code: ", response.statusCode)
+			}
+		})
 		games[newGameId] = {
 			"gameId": newGameId,
 			"clients": [],
@@ -51,6 +60,7 @@ io.on('connection', (socket) => {
 		}
 		socket.emit('side', movingBat)
     if(games[gameId].clients.length >= 2){
+		
       socket.to(data.gameId).emit('full');  
       socket.emit('full')  
     }
@@ -65,8 +75,8 @@ io.on('connection', (socket) => {
 
 app.use('/battle', routesBattle);
 
-server.listen(8080, () => {
-  console.log('listening on *:8080');
+server.listen(8090, () => {
+  console.log('listening on *:8090');
 });
 
 function S4() {

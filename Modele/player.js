@@ -10,21 +10,20 @@ class Player{
         this.id = id;
     }
 
-    get getId(){
+    getId(){
         return this.id;
     }
 
-    get getPseudo(){
+    getPseudo(){
         return this.pseudo;
     }
 
-    get getState(){
+    getState(){
         return this.state;
     }
 
-    set setState(etat){
+    setState(etat){
         this.state = etat;
     }
 }
-
 module.exports = Player
