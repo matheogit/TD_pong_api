@@ -46,6 +46,7 @@ class Game{
         }
         return gagnant;
     }
+    
     setPosR(joueur_id,x,y){//récupérer la position d'un raquette
         if(joueur_id == this.player1.getId()){
             this.raquette1.setPosX(x);
@@ -63,7 +64,7 @@ class Game{
         this.score_p1 = score.score_left;
         this.score_p2 = score.score_right;
     }
-    getPosB(x,y){//récupérer la position de la bale
+    getPosB(x,y){//récupérer la position d'un raquette
         this.balle.setPosX(x);
         this.balle.setPosY(y);
     }

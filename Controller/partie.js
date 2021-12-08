@@ -7,7 +7,7 @@ module.exports = {
     res.send(result)
   },
   createNewGame: function (req, res) {
-    game = new Game(1,1,2)
+    game = new Game(req.params.idGame,1,2)
     res.send(game)
   },
   getGame: function(req, res) {
