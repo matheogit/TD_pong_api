@@ -85,3 +85,11 @@ function S4() {
 
 // then to call it, plus stitch in '4' in the third group
 const guid = () => (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
+
+//branch blasseye---------------------------------------
+var routesLogin = require('./auth/routesLogin');
+var routesRegister = require('./auth/routesRegister');
+
+app.use('/login', routesLogin)
+app.use('/register', routesRegister)
+//------------------------------------------------------
