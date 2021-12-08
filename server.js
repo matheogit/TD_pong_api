@@ -91,6 +91,6 @@ require('dotenv').config('./.env')
 var routesLogin = require('./Controller/auth/routesLogin');
 var routesRegister = require('./Controller/auth/routesRegister');
 
-app.use('/login', routesLogin)
-app.use('/register', routesRegister)
+app.use('/auth/login', routesLogin)
+app.use('/auth/register', routesRegister)
 //------------------------------------------------------
