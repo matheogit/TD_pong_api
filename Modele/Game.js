@@ -59,10 +59,9 @@ class Game{
     getPosR(joueur_id){//récupérer la position d'un raquette
 
     }
-    updateScore(joueur_id){//Récupérer le score de la partie
-
-        this.score_p1 = score.score_left;
-        this.score_p2 = score.score_right;
+    updateScore(score1,score2){//Récupérer le score de la partie
+        this.score_p1 = score1;
+        this.score_p2 = score2;
     }
     getPosB(x,y){//récupérer la position d'un raquette
         this.balle.setPosX(x);
@@ -79,6 +78,14 @@ class Game{
             case 2:
                 this.player2 = player;
                 break;
+        }
+    }
+
+    setGagnant(){
+        if(this.score_p1 > this.score_p2){
+            this.gagnant = this.player1;
+        }else{
+            this.gagnant = this.player2;
         }
     }
     

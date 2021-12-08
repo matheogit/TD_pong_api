@@ -18,7 +18,7 @@ router.route('/score/:idJoueur').get(score.getScore);
 
 /*********PARTIE*********/
 router.route('/etat').get(partie.getEtatPartie);
-router.route('/endgame').get(partie.endGame);
+router.route('/endgame/:score_j1/:score_j2').get(partie.endGame);
 router.route('/newgame/:idGame').get(partie.createNewGame);
 
 module.exports = router;
