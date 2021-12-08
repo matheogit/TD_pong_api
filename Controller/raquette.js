@@ -7,11 +7,11 @@ module.exports = {
     
     let result
     if (idJoueur == 1) {
-      positionRaquette = game.raquette1.pos_Y
+      positionRaquette = game.raquette1.getPosY()
       result = {"id": idJoueur, "pos": positionRaquette}
     }
     else if (idJoueur == 2) {
-      positionRaquette = game.raquette2.pos_Y
+      positionRaquette = game.raquette2.getPosY()
       result = {"id": idJoueur, "pos": positionRaquette}
     }
     else {
