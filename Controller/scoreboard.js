@@ -31,7 +31,12 @@ module.exports = {
       }
       res.send(scoreboard)
     });*/
-    let leaderBoard = {1:{id: "10", score:"50"}, 2:{id: "3", score:"48",},3:{id: "5", score:"35",}}
+    let leaderBoard = {0:{id: 1, result: "Defaite", pointsPlayer1: 3, pointsPlayer2: 5, duree: 60, date: "08/12/2021"}, 
+                       1:{id: 2, result: "Victoire", pointsPlayer1: 5, pointsPlayer2: 1, duree: 10, date: "08/12/2021"},
+                       2:{id: 3, result: "Victoire", pointsPlayer1: 5, pointsPlayer2: 2, duree: 20, date: "08/12/2021"},
+                       3:{id: 5, result: "Victoire", pointsPlayer1: 5, pointsPlayer2: 2, duree: 30, date: "08/12/2021"},
+                       4:{id: 6, result: "Defaite", pointsPlayer1: 1, pointsPlayer2: 5, duree: 40, date: "08/12/2021"},
+                      }
     res.send(leaderBoard)
   }, 
 }
