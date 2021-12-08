@@ -23,6 +23,7 @@ router.route('/endgame').get(partie.endGame);
 router.route('/newgame/:idGame').get(partie.createNewGame);
 
 /*********SCOREBOARD*********/
-router.route('/scoreboard/:idJoueur').get(scoreboard.getScoreboard);
+router.route('/scoreBoard/:idJoueur').get(scoreboard.getScorePlayer);
+router.route('/leaderBoard').get(scoreboard.getLeaderBoard);
 
 module.exports = router;

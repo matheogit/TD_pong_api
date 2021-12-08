@@ -11,7 +11,7 @@ module.exports = {
     });
     res.send("Score enregistré")
   },
-  getScoreboard: function (req, res) {
+  getScorePlayer: function (req, res) {
     axios.get("https://auth-pong-esiea.azurewebsites.net/getParties/" + req.params.idJoueur).then(function(reponse){
       let parties = reponse.data;
       let scoreboard = []
@@ -21,5 +21,17 @@ module.exports = {
       scoreboard.sort((x, y) => {return y - x;})
       res.send(scoreboard)
     });
-  }
+  },
+  getLeaderBoard: function (req, res) {
+    /*axios.get("https://auth-pong-esiea.azurewebsites.net/getParties/" + req.params.idJoueur).then(function(reponse){
+      let parties = reponse.data;
+      let leaderBoard = []
+      for (let i = 0; i < 3; i++) {
+        leaderBoard.push({id:'',score:''})      
+      }
+      res.send(scoreboard)
+    });*/
+    let leaderBoard = {1:{id: "10", score:"50"}, 2:{id: "3", score:"48",},3:{id: "5", score:"35",}}
+    res.send(leaderBoard)
+  }, 
 }
