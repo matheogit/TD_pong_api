@@ -26,3 +26,5 @@ class Player{
         this.state = etat;
     }
 }
+
+module.exports = Player

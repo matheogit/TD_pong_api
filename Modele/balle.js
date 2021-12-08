@@ -8,11 +8,11 @@ class Balle{
         this.posY = posY;
     }
 
-    getPosX(){
+    get getPosX(){
         return this.posX;
     }
 
-    getPosY(){
+    get getPosY(){
         return this.posY;
     }
 }

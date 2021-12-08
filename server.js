@@ -4,12 +4,12 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server) ;
-var bodyParser = require('body-parser')
+var routesBattle = require('./Controller/routesBattle')
 
 app.use(express.static(__dirname + "/public"));
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/acceuil.html');
+  res.sendFile( __dirname + '/acceuil.html');
 });
 
 app.get('/:choix', (req, res) => {
@@ -63,6 +63,7 @@ io.on('connection', (socket) => {
   });
 });
 
+app.use('/battle', routesBattle);
 
 server.listen(8080, () => {
   console.log('listening on *:8080');

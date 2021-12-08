@@ -1,6 +1,5 @@
-var raquette = require("./raquette")
-var balle = require("./balle")
-
+var raquette = require('./raquette')
+var balle = require('./balle')
 class Game{
     id;
     player1;
@@ -22,7 +21,7 @@ class Game{
         this.score_p1 = 0;
         this.score_p2 = 0;
     }
-    get gameLauncher(){//boucle de jeu
+    game(){//boucle de jeu
         temp_score_p1 = 0;
         temp_score_p2 = 0;
         gagnant = null; //futur gagnant de la partie
