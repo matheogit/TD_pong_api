@@ -87,6 +87,7 @@ function S4() {
 const guid = () => (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
 
 //branch blasseye---------------------------------------
+require('dotenv').config('./.env')
 var routesLogin = require('./Controller/auth/routesLogin');
 var routesRegister = require('./Controller/auth/routesRegister');
 
