@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>two</title>
+      </head>
+    <body>
+        <button onclick="create_game('create')">create</button>
+        <input id="game_id" type="text" placeholder="id">
+        <button onclick="join_game()">joinwithid</button>
+        <button type="submit" formmethod="post">joinrand</button>
+    </body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>  
+        var socket = io();
+        function create_game(value) {
+            socket.emit(value);
+		}
+        socket.on('create', function(response) {
+            console.log(window.location.protocol + "//" + window.location.host + window.location.pathname + "?gameId=" + response.gameId)
+			window.location = window.location.protocol + "//" + window.location.host + "/game.html" + "?gameId=" + response.gameId;
+		})
+        function join_game() {
+            window.location = window.location.protocol + "//" + window.location.host + "/game.html" + "?gameId=" + document.getElementById('game_id').value;
+		}
+
+    </script>
+</html> 

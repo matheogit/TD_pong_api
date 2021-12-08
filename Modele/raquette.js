@@ -10,19 +10,21 @@ class Raquette{
         this.pos_X = pos_X;
     }
 
-    get getID_joueur(){
+    getID_joueur(){
         return this.id_joueur;
     }
 
-    get getPosY(){
+    getPosY(){
         return this.pos_Y;
     }
 
-    set setPosY(pos){
+    setPosY(pos){
         this.pos_Y = pos;
     }
 
-    get getPosX(){
+    getPosX(){
         return this.pos_X;
     }
 }
+
+module.exports = Raquette

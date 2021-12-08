@@ -1,3 +1,5 @@
+var raquette = require('./raquette')
+var balle = require('./balle')
 class Game{
     id;
     player1;
@@ -44,6 +46,16 @@ class Game{
         }
         return gagnant;
     }
+    
+    setPosR(joueur_id,x,y){//récupérer la position d'un raquette
+        if(joueur_id == this.player1.getId()){
+            this.raquette1.setPosX(x);
+            this.raquette1.setPosY(y)
+        }else if(joueur_id == this.player2.getId()){
+            this.raquette2.setPosX(x);
+            this.raquette2.setPosY(y);
+        }
+    }
     getPosR(joueur_id){//récupérer la position d'un raquette
 
     }
@@ -52,11 +64,24 @@ class Game{
         this.score_p1 = score.score_left;
         this.score_p2 = score.score_right;
     }
-    getPosB(){//récupérer la position d'un raquette
-
-    }  
-    postState(){//envoyer l'etat de la partie
-
+    getPosB(x,y){//récupérer la position d'un raquette
+        this.balle.setPosX(x);
+        this.balle.setPosY(y);
+    }
+    postState(etat){//envoyer l'etat de la partie
+        this.termine = etat
+    }
+    setPlayer(num, player){
+        switch(num){
+            case 1:
+                this.player1 = player;
+                break;
+            case 2:
+                this.player2 = player;
+                break;
+        }
     }
     
 }
+
+module.exports = Game
