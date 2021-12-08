@@ -87,8 +87,8 @@ function S4() {
 const guid = () => (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
 
 //branch blasseye---------------------------------------
-var routesLogin = require('./auth/routesLogin');
-var routesRegister = require('./auth/routesRegister');
+var routesLogin = require('./Controller/auth/routesLogin');
+var routesRegister = require('./Controller/auth/routesRegister');
 
 app.use('/login', routesLogin)
 app.use('/register', routesRegister)
