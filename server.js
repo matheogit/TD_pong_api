@@ -1,29 +1,41 @@
-import express from "express";
-import { json, urlencoded } from "body-parser";
-
+const express = require('express');
 const app = express();
-
-var corsOptions = {
-    origin: "http://localhost:8080"
-  };
-
-app.use(cors(corsOptions));
-
-// parse requests of content-type - application/json
-app.use(json());
-
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(urlencoded({ extended: true }));
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server) ;
+var routesBattle = require('./Controller/routesBattle')
 
 // simple route
-app.get("/", (req, res) => {
-    res.json({ message: "Welcome to bezkoder application." });
-  });
-
-// set port, listen for requests
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+app.get('/', (req, res) => {
+  res.sendFile( __dirname + '/acceuil.html');
 });
 
-app.use(PORT);
+app.get('/:choix', (req, res) => {
+  res.sendFile(__dirname + "/" + req.params.choix);
+});
+
+var nbclients = 0;
+
+io.on('connection', (socket) => {
+  console.log('client connected');
+  nbclients++;
+  console.log(nbclients);
+  console.log('client // ' + socket.request.connection.remoteAddress + " // " + socket.id);
+
+  socket.on('disconnect', function () {
+    console.log('client disconnected');
+    nbclients--;
+    console.log(nbclients);
+  });
+  socket.on('button', function(page){
+    console.log('client // ' + socket.request.connection.remoteAddress + " // " + socket.id);
+    io.emit("button", page);
+  });
+});
+
+app.use('/battle', routesBattle);
+
+server.listen(8080, () => {
+  console.log('listening on *:8080');
+});

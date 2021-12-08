@@ -1,4 +1,4 @@
-var Game = require("../../../../Game")
+var Game = require("../Modele/Game")
 
 var game
 module.exports = {

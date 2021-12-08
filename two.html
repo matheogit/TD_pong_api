@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Acceuil</title>
+      </head>
+    <body>
+        <button type="submit" formmethod="post" onclick="myFunction('./leaderboard.html')">create</button>
+        <input type="text" placeholder="id">
+        <button type="submit" formmethod="post">joinwithid</button>
+        <button type="submit" formmethod="post">joinrand</button>
+    </body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>  
+        var socket = io();
+        function myFunction(value) {
+            socket.emit('button', value)
+        }
+        socket.on('button', function(destination) {
+          window.location.href = destination;
+        })
+    </script>
+</html> 
