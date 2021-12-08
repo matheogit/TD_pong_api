@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
   });
 	socket.on('create', () => {
 		let newGameId = guid();
-		request("http://localhost:8090/battle/newgame" + newGameId, (error, response, body)=> {
+		request("http://localhost:8080/battle/newgame/" + newGameId, (error, response, body)=> {
 			if (!error && response.statusCode === 200) {
 			  const game_json = JSON.parse(body)
 			  console.log("Got a response: ", game_json)
@@ -59,11 +59,11 @@ io.on('connection', (socket) => {
 			movingBat = "left-bat";
 		}
 		socket.emit('side', movingBat)
-    if(games[gameId].clients.length >= 2){
-		
-      socket.to(data.gameId).emit('full');  
-      socket.emit('full')  
-    }
+		if(games[gameId].clients.length >= 2){
+			
+		socket.to(data.gameId).emit('full');  
+		socket.emit('full')  
+		}
 	});
 	socket.on('move', (data) => {
 		socket.to(data.gameId).emit('move', {"movingBat": data.movingBat, "position": data.position});
@@ -75,8 +75,8 @@ io.on('connection', (socket) => {
 
 app.use('/battle', routesBattle);
 
-server.listen(8090, () => {
-  console.log('listening on *:8090');
+server.listen(8080, () => {
+  console.log('listening on *:8080');
 });
 
 function S4() {
