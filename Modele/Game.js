@@ -56,6 +56,9 @@ class Game{
             this.raquette2.setPosY(y);
         }
     }
+    getPosR(joueur_id){//récupérer la position d'un raquette
+
+    }
     updateScore(joueur_id){//Récupérer le score de la partie
 
         this.score_p1 = score.score_left;
@@ -67,6 +70,16 @@ class Game{
     }
     postState(etat){//envoyer l'etat de la partie
         this.termine = etat
+    }
+    setPlayer(num, player){
+        switch(num){
+            case 1:
+                this.player1 = player;
+                break;
+            case 2:
+                this.player2 = player;
+                break;
+        }
     }
     
 }
