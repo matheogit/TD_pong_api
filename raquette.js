@@ -26,3 +26,5 @@ class Raquette{
         return this.pos_X;
     }
 }
+
+module.exports = Raquette
