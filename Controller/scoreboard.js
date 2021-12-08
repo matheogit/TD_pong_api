@@ -12,7 +12,7 @@ module.exports = {
     res.send("Score enregistré")
   },
   getScorePlayer: function (req, res) {
-    axios.get("https://auth-pong-esiea.azurewebsites.net/getParties/" + req.params.idJoueur).then(function(reponse){
+    axios.get(process.env.API_AUTH + "/getParties/" + req.params.idJoueur).then(function(reponse){
       let parties = reponse.data;
       let scoreboard = []
       for (let i = 0; i < parties.length; i++) {
@@ -23,7 +23,7 @@ module.exports = {
     });
   },
   getLeaderBoard: function (req, res) {
-    /*axios.get("https://auth-pong-esiea.azurewebsites.net/getParties/" + req.params.idJoueur).then(function(reponse){
+    /*axios.get("process.env.API_AUTH + "/getLeaderBoard").then(function(reponse){
       let parties = reponse.data;
       let leaderBoard = []
       for (let i = 0; i < 3; i++) {
