@@ -65,8 +65,8 @@ class Game{
         this.balle.setPosX(x);
         this.balle.setPosY(y);
     }
-    postState(){//envoyer l'etat de la partie
-
+    postState(etat){//envoyer l'etat de la partie
+        this.termine = etat
     }
     
 }

@@ -12,5 +12,10 @@ module.exports = {
   },
   getGame: function(req, res) {
     return game;
+  },
+  endGame: function(req, res) {
+    console.log(game)
+    game.postState(true);
+    res.send(game)
   }
 }
