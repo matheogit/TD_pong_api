@@ -8,25 +8,19 @@ class Balle{
         this.posY = posY;
     }
 
-    get getPosX(){
+    getPosX(){
         return this.posX;
     }
 
-    get getPosY(){
+    getPosY(){
         return this.posY;
     }
 
-    /**
-     * @param {any} positionX
-     */
-    set setPosX(positionX){
+    setPosX(positionX){
         this.posX = positionX;
     }
 
-    /**
-     * @param {any} positionY
-     */
-    set setPosY(positionY){
+    setPosY(positionY){
         this.posY = positionY;
     }
 }
