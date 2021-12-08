@@ -14,6 +14,8 @@ module.exports = {
     return game;
   },
   endGame: function(req, res) {
+    game.updateScore(req.params.score_j1,req.params.score_j2);
+    game.setGagnant();
     console.log(game)
     game.postState(true);
     res.send(game)
