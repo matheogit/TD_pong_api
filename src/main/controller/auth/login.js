@@ -17,10 +17,9 @@ module.exports = {
         axios.get('https://svc-pong-esiea.azurewebsites.net/login')
             .then(function (response) {
                 console.log(response.status);
-                console.log(response.data);    
+                console.log(response.data);
+                let result = {"status":response.status,"data":response.data};
+                res.send(result);
             });
-        
-        let result = {"status":status,"data":data};
-        res.send(result);
     },
 }
